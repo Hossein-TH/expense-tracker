@@ -25,7 +25,7 @@ const ExpenseOverview = () => {
         name={"Recent Expenses"}
         component={RecentExpensesScreen}
         options={{
-          title: "RecentExpense",
+          title: "Recent Expense",
           tabBarLabel: "Recent",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="hourglass" size={size} color={color} />
