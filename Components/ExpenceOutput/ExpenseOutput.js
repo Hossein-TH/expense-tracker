@@ -1,7 +1,7 @@
-import {StyleSheet, View} from "react-native";
+import { StyleSheet, View } from "react-native";
 import ExpenseSummary from "./ExpenseSummary";
 import ExpenseList from "./ExpenseList";
-import {GlobalStyles} from "../../Constants/Styles";
+import { GlobalStyles } from "../../Constants/Styles";
 
 const DUMMY_EXPENSES = [
   {
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingBottom: 0,
     backgroundColor: GlobalStyles.colors.primary700,
-  }
+  },
 });
 
 export default ExpenseOutput;
