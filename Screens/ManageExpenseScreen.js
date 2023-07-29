@@ -5,6 +5,7 @@ import { useContext } from "react";
 import IconButton from "../Components/UI/IconButton";
 import Button from "../Components/UI/Button";
 import { ExpensesContext } from "../Store/expenses-context";
+import ExpenseForm from "../Components/ManageExpense/ExpenseForm";
 
 function ManageExpenseScreen({ route, navigation }) {
   const expenseCtx = useContext(ExpensesContext);
@@ -46,6 +47,7 @@ function ManageExpenseScreen({ route, navigation }) {
 
   return (
     <View style={styles.container}>
+      <ExpenseForm />
       <View style={styles.buttonContainer}>
         <Button style={styles.button} mode="flat" onPress={canselHandler}>
           Cansel
