@@ -5,7 +5,7 @@ import { useContext } from "react";
 import IconButton from "../Components/UI/IconButton";
 import { ExpensesContext } from "../Store/expenses-context";
 import ExpenseForm from "../Components/ManageExpense/ExpenseForm";
-import { storeExpense } from "../Util/http";
+import { storeExpense, updateExpense, deleteExpense } from "../Util/http";
 
 function ManageExpenseScreen({ route, navigation }) {
   const expensesCtx = useContext(ExpensesContext);
@@ -23,10 +23,11 @@ function ManageExpenseScreen({ route, navigation }) {
     });
   }, [navigation, isEditing]);
 
-  const deleteExpenseHandler = () => {
+  async function deleteExpenseHandler() {
+    await deleteExpense(editedExpenseId);
     expensesCtx.deleteExpense(editedExpenseId);
     navigation.goBack();
-  };
+  }
 
   const canselHandler = () => {
     navigation.goBack();
@@ -35,6 +36,7 @@ function ManageExpenseScreen({ route, navigation }) {
   async function confirmHandler(expenseData) {
     if (isEditing) {
       expensesCtx.updateExpense(editedExpenseId, expenseData);
+      await updateExpense(editedExpenseId, expenseData);
     } else {
       const id = await storeExpense(expenseData);
       expensesCtx.addExpense({ ...expenseData, id: id });
