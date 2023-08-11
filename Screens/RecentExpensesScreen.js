@@ -2,15 +2,17 @@ import ExpenseOutput from "../Components/ExpenceOutput/ExpenseOutput";
 import { useContext,useEffect } from "react";
 import { ExpensesContext } from "../Store/expenses-context";
 import { getDateMinusDays } from "../Util/Date";
-import {getExpenses} from "../Util/http";
+import {fetchExpenses} from "../Util/http";
 
 function RecentExpensesScreen() {
   const expensesCtx = useContext(ExpensesContext);
 
   useEffect(() => {
-    async function fetchExpenses () {
-      const expenses = await getExpenses();
+    async function getExpenses () {
+      const expenses = await fetchExpenses();
+      expensesCtx.setExpenses(expenses)
     }
+    getExpenses();
   }, []);
 
 
